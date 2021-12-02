@@ -5,15 +5,21 @@ header {
 }
 
 .header_search {
-    height: 55%;
+    height: 50%;
     width: 100vw;
     position: absolute;
 }
 
 .header_connect {
-    height: 5%;
+    height: 10%;
     top: 0;
     background-color: red;
+}
+
+.btn_connect{
+    position:relative; 
+    display:inline-block; 
+    float:right;
 }
 
 .header_foot {
