@@ -24,21 +24,26 @@
 /* Color Theme Swatches in RGBA BACKGROUND */
 
 .Max-Fit-Fitness-and-Nutrition-App-UI-Design-1-bg {
-    color: rgba(242, 60, 127, 1);
+    background-color: rgba(242, 60, 127, 1);
 }
 
 .Max-Fit-Fitness-and-Nutrition-App-UI-Design-2-bg {
-    color: rgba(70, 30, 216, 1);
+    background-color: rgba(70, 30, 216, 1);
 }
 
 .Max-Fit-Fitness-and-Nutrition-App-UI-Design-3-bg {
-    color: rgba(111, 106, 242, 1);
+    background-color: rgba(111, 106, 242, 1);
 }
 
 .Max-Fit-Fitness-and-Nutrition-App-UI-Design-4-bg {
-    color: rgba(41, 40, 89, 1);
+    background-color: rgba(41, 40, 89, 1);
 }
 
 .Max-Fit-Fitness-and-Nutrition-App-UI-Design-5-bg {
-    color: rgba(14, 22, 38, 1);
+    background-color: rgba(14, 22, 38, 1);
+}
+
+element {
+    --Max-Fit-Fitness-and-Nutrition-App-UI-Design-1: rgba(242, 60, 127, 1);
+    --Max-Fit-Fitness-and-Nutrition-App-UI-Design-2: rgba(70, 30, 216, 1);
 }

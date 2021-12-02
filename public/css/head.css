@@ -1,16 +1,42 @@
 header {
     height: 100vh;
     width: 100vw;
+    margin-bottom: 0px;
 }
 
 .header_search {
-    height: 100vh;
+    height: 55%;
     width: 100vw;
     position: absolute;
 }
 
-input {
-    margin-top: 50vh;
-    margin-left: 50vw;
-    transform: translate(-50%, -50%);
+.header_connect {
+    height: 5%;
+    top: 0;
+    background-color: red;
+}
+
+.header_foot {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 40%;
+    margin-bottom: 0px;
+}
+
+.waves {
+    position: absolute;
+}
+
+.wave_1 {
+    z-index: 3;
+}
+
+.wave_2 {
+    z-index: 2;
+}
+
+.wave_3 {
+    z-index: 1;
 }
