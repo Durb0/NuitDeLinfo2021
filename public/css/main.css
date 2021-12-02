@@ -1,2 +1,6 @@
 @import url("color.css");
 @import url("head.css");
+* {
+    margin: 0;
+    padding: 0;
+}
