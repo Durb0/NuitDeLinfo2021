@@ -1,8 +1,8 @@
 /*Le programme débute par la définition de constantes et de variables globales :
 * {{{COTE}}} : dimensions en pixels des carrés qui servent de trame pour le jeu,
 * {{{NB_COLONNES}}} et {{{NB_LIGNES}}} : dimensions de la zone de jeu en nombres de carrés.*/
-var NB_COLONNES=30;
-var NB_LIGNES=20;
+var NB_COLONNES=15;
+var NB_LIGNES=15;
 var COTE=32;
 /*Définitions des variables qui réprésentent les éléments de l'interface utilisateur.
 
@@ -20,7 +20,7 @@ ctx.fillStyle="#0000FF";
 Au départ le snake est constitué de 5 carrés, le carré de tête est en début de tableau.
 
 Chaque position est elle-même un tableau contenant l'abscisse et l'ordonnée.*/
-var snake=[[4,0],[3,0],[2,0],[1,0],[0,0]];
+var snake=[[4,0]];
 /*Position du bonbon.*/
 var bonbon;
 /*Valeurs à ajouter à l'abscisse et à l'ordonnée du carré de tête pour réaliser le déplacement du serpent.
@@ -35,20 +35,23 @@ Cette fonction s'occupe de dessiner sur le {{{canvas}}} le dessin correspondant 
 * L'ensemble du {{{canvas}}} est effacé,
 * une boucle permet de parcourir les éléments du tableau {{{snake}}} pour afficher les différents carrés constituant le corps du serpent,
 * le bonbon est dessiné (également sous forme de carré).*/
-
+let imgNoyeList = [["images/black_gregory.png", "images/black_migran.png"],["images/white_gregory.png", "images/white_migran.png"]]
 let headImage = new Image()
 let tailImage = new Image()
 let noyeImage = new Image()
 headImage.src = "images/bato.png"
-tailImage.src = "images/mig.png"
+tailImage.src = "images/mig_save.png"
 noyeImage.src = "images/migNoy.png"
+let indexMig = 0
+let colorMig = 0
 function majDessin(){
 	ctx.clearRect(0,0,dessin.width,dessin.height);
 	ctx.drawImage(headImage, snake[0][0]*COTE,snake[0][1]*COTE,COTE,COTE);
 	for(var i=1,l=snake.length;i<l;i++){
         ctx.drawImage(tailImage, snake[i][0]*COTE,snake[i][1]*COTE,COTE,COTE);
 	}
-
+	noyeImage.src = imgNoyeList[colorMig][indexMig]
+	indexMig = indexMig ==0 ? 1: 0
 	ctx.drawImage(noyeImage,bonbon[0]*COTE,bonbon[1]*COTE,COTE,COTE);	
 }
 /***Fonction de mise à jour du score***/
@@ -65,7 +68,10 @@ Lorsque la partie se termine :
 function finPartie(){
 	clearInterval(timerJeu);
 	//alert("Perdu !");
-	location.reload();
+	setTimeout(()=>{
+
+		location.reload();
+	},400)
 }
 /***Fonction de la boucle du jeu**
 
@@ -122,18 +128,31 @@ Si la tête touche le bonbon, le serpent s'allonge.*/
 function bougeSnake(){
 	var tete=[snake[0][0]+snakeIncX,snake[0][1]+snakeIncY];
 /*Test pour savoir si le snake sort du cadre*/
-	if(tete[0]==-1||tete[0]==NB_COLONNES||tete[1]==-1||tete[1]==NB_LIGNES) return false;
-/*Test pour savoir si le snake se mord :
+	if(tete[0]==-1||tete[0]==NB_COLONNES||tete[1]==-1||tete[1]==NB_LIGNES) {
+		console.log("mur");
+		let audio = new Audio('son/mur.mp3');
+		audio.play();
+		return false;
+	} 
 
+/*Test pour savoir si le snake se mord :
 La boucle sert à parcourir le tableau des positions des éléments du serpent pour les comparer à la nouvelle position de la tête, en cas de coïncidence la fonction se termine immédiatement en retournant {{{false}}}.*/
 	for(var i=0,l=snake.length-1;i<l;i++){
-		if((tete[0]==snake[i][0])&&(tete[1]==snake[i][1])) return false;
+		if((tete[0]==snake[i][0])&&(tete[1]==snake[i][1])) {
+			console.log("ah");
+			let audio = new Audio('son/ah.mp3');
+			audio.play();
+			return false;
+		}
 	}
 /*Si la position de la tête coïncide avec la position du bonbon, on place un nouveau bonbon et on met à jour le nouveau score.
 
 Dans le cas contraire le dernier élément du tableau {{{snake}}} est retiré (le serpent ne doit pas s'allonger).*/
 	if((tete[0]==bonbon[0])&&(tete[1]==bonbon[1])){
+		let audio = new Audio('son/waou.mp3');
+		audio.play();
 		placeBonbon();
+		colorMig = colorMig==0 ? 1 : 0
 		// majScore(snake.length-4);
 	}else{
 		snake.pop();
