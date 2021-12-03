@@ -1,12 +1,13 @@
 Highcharts.chart('containerBar', {
     chart: {
-        type: 'bar'
+        type: 'bar',
+        backgroundColor: 'transparent'
     },
     title: {
-        text: 'Historic World Population by Region'
+        text: 'DATA NOM'
     },
     subtitle: {
-        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+        text: 'Source: <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Wikipedia.org</a>'
     },
     xAxis: {
         categories: ['victimes', 'sauveteurs'],
