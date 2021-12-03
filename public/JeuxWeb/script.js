@@ -63,24 +63,28 @@ function keySpace(e) {
 }
 
 function physique(){
-	if(obstacleSol.length!=0)
-		if((obstacleSol[0]<=0 && obstacleSol[0]+20>=0) || (obstacleSol[0]<=40 && obstacleSol[0]+20>=40)){
+
+	for(let i=0;i<obstacleSol.length;i++){
+		if((obstacleSol[i]<=0 && obstacleSol[i]+20>=0) || (obstacleSol[i]<=40 && obstacleSol[i]+20>=40)){
 	    	if(position<21)clearInterval(run);
 		}
+	}
 
-	if(obstacleAir.length!=0)
-		if((obstacleAir[0]<=0 && obstacleAir[0]+20>=0) || (obstacleAir[0]<=40 && obstacleAir[0]+20>=40)){
-	    	if(position>39)clearInterval(run);
+	for(let i=0;i<obstacleAir.length;i++){
+		if((obstacleAir[i]<=0 && obstacleAir[i]+20>=0) || (obstacleAir[i]<=40 && obstacleAir[i]+20>=40)){
+	    	if(position>19)clearInterval(run);
 		}
+	}		
 
-	if(aLaMer.length!=0)
-		if((aLaMer[0]<=0 && aLaMer[0]+20>=0) || (aLaMer[0]<=40 && aLaMer[0]+20>=40)){
+	for(let i=0;i<aLaMer.length;i++){
+		if((aLaMer[i]<=0 && aLaMer[i]+20>=0) || (aLaMer[i]<=40 && aLaMer[i]+20>=40)){
 			if(position<21){
 				if(bouer!=0)score+=100;
     			else score-=100;
     			aLaMer.shift();
 			}
 		}
+	}		
 }
 
 function main() {
@@ -89,7 +93,8 @@ function main() {
 	random--;
 	if (random==0) {
 		if (Math.random()<0.5) {
-			obstacleSol.push(850);
+			if(aLaMer.length!=0 && aLaMer[aLaMer.length-1]<750)obstacleSol.push(950);
+			else obstacleSol.push(850);
 			random=parseInt(Math.random()*100+500);
 		}else{
 			obstacleAir.push(850);
@@ -98,7 +103,8 @@ function main() {
 	}
 	couldownALaMer--;
 	if (couldownALaMer==0) {
-		aLaMer.push(850);
+		if(obstacleSol.length!=0 && obstacleSol[obstacleSol.length-1]<750)aLaMer.push(950);
+		else aLaMer.push(850);
 		couldownALaMer=parseInt(Math.random()*100+500);
 	}
 	if (etat==1 && position<50) {
