@@ -67,7 +67,7 @@ function keySpace(e) {
 }
 
 function physique(){
-	if(obstacleAir.length!=0)
+	if(obstacleSol.length!=0)
 		if((obstacleSol[0]<=0 && obstacleSol[0]+20>=0) || (obstacleSol[0]<=40 && obstacleSol[0]+20>=40)){
 	    	if(position<21)clearInterval(run);
 		}
@@ -83,6 +83,7 @@ function physique(){
 				if(bouer!=0)score+=100;
     			else score-=100;
     			aLaMer.shift();
+    			//console.log(aLaMer);
 			}
 		}
 }
@@ -121,7 +122,7 @@ function main() {
 		bouer++;
 	}else if (bouer !=0) {
 		bouer=0;
-		couldownBouer=500;
+		couldownBouer=200;
 	}
 	for(let i=0;i<obstacleSol.length;i++){
 		if (obstacleSol[i]<-49) {
