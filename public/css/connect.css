@@ -1,0 +1,19 @@
+@import url("head.css");
+@import url("color.css");
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.connect_foot{
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 40%;
+    margin-bottom: 0px;
+}
