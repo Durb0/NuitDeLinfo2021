@@ -1,5 +1,6 @@
 //width="800" height="450"
 document.addEventListener("keydown", keySpace, false);
+var scoreTxt=document.getElementById("score");
 var c=document.getElementById("monCanvas");
 c.width  = c.offsetWidth;
 c.height = c.offsetHeight;
@@ -12,6 +13,7 @@ var obstacleSol=[];
 var obstacleAir=[];
 var aLaMer=[];
 var time=0;
+var score=0;
 var random=1;
 var bouer=0;
 var couldownBouer=0;
@@ -65,17 +67,29 @@ function keySpace(e) {
 }
 
 function physique(){
-	if((obstacleSol[0]<=0 && obstacleSol[0]+20>=0) || (obstacleSol[0]<=40 && obstacleSol[0]+20>=40)){
-    	if(position<21)clearInterval(run);
-	}
+	if(obstacleAir.length!=0)
+		if((obstacleSol[0]<=0 && obstacleSol[0]+20>=0) || (obstacleSol[0]<=40 && obstacleSol[0]+20>=40)){
+	    	if(position<21)clearInterval(run);
+		}
 
-	if((obstacleAir[0]<=0 && obstacleAir[0]+20>=0) || (obstacleAir[0]<=40 && obstacleAir[0]+20>=40)){
-    	if(position>39)clearInterval(run);
-	}
+	if(obstacleAir.length!=0)
+		if((obstacleAir[0]<=0 && obstacleAir[0]+20>=0) || (obstacleAir[0]<=40 && obstacleAir[0]+20>=40)){
+	    	if(position>39)clearInterval(run);
+		}
+
+	if(aLaMer.length!=0)
+		if((aLaMer[0]<=0 && aLaMer[0]+20>=0) || (aLaMer[0]<=40 && aLaMer[0]+20>=40)){
+			if(position<21){
+				if(bouer!=0)score+=100;
+    			else score-=100;
+    			aLaMer.shift();
+			}
+		}
 }
 
 function main() {
 	time++;
+	score++;
 	random--;
 	if (random==0) {
 		if (Math.random()<0.5) {
@@ -103,7 +117,7 @@ function main() {
 	}
 	if (couldownBouer>0) {
 		couldownBouer--;
-	}else if (bouer!=0 && bouer<50) {
+	}else if (bouer!=0 && bouer<100) {
 		bouer++;
 	}else if (bouer !=0) {
 		bouer=0;
@@ -144,8 +158,9 @@ function main() {
 	ctx.fillStyle="#FFFFFF";
 	ctx.fillRect(0,0,800,450);
 	drawBateau();
+	drawALaMer();
 	drawObstacleSol();
 	drawObstacleAir();
-	drawALaMer();
 	if (bouer!=0) {drawBouer()}
+	scoreTxt.innerText=score;
 }
