@@ -1,5 +1,7 @@
 @import url("color.css");
 @import url("head.css");
+@import url("content.css");
+@import url("footer.css");
 * {
     margin: 0;
     padding: 0;

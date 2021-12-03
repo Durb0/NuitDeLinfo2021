@@ -1,0 +1,25 @@
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 40%;
+    width: 1920px;
+    margin-bottom: 0px;
+}
+
+.waves {
+    position: absolute;
+}
+
+.wave_1 {
+    z-index: 3;
+}
+
+.wave_2 {
+    z-index: 2;
+}
+
+.wave_3 {
+    z-index: 1;
+}
