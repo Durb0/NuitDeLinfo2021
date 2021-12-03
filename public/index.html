@@ -11,7 +11,7 @@
     <title>Search</title>
 </head>
 
-<body>
+<body><div id="all">
     <header class="css-selector">
 
         <div class="header_connect Max-Fit-Fitness-and-Nutrition-App-UI-Design-4-bg ">
@@ -45,10 +45,36 @@
         </div>
 
     </footer>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="js/main.js"></script>
 <script src="https://kit.fontawesome.com/84c040765d.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="script/scriptJeuxSaut.js"></script>
+<script type="text/javascript">
+            document.addEventListener("keydown", key, false);
+
+            var konami=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","a","b"];
+            var cKonami=0;
+
+            var HTML="<h1>Score : <nbr id=\"score\">test</nbr></h1><div id=\"dessin\"><img src=\"image/background.gif\"><canvas id=\"monCanvas\" width=\"800\" height=\"450\"></canvas></div>";
+
+            //HTML+="<script src=\"script/scriptJeuxSaut.js\"><\/script>";
+
+            function key(e) {
+                console.log(e);
+                if(e.key == konami[cKonami]) {
+                    cKonami++;
+                }else{
+                    cKonami=0;
+                }
+                if (cKonami==10) {
+                    document.getElementById("all").innerHTML=HTML;
+                    document.querySelector("head").innerHTML+="<link rel=\"stylesheet\" type=\"text/css\" href=\"css/styleJeuxSaut.css\"/>";
+                    start();
+                }
+            }
+        </script>
 
 </html>

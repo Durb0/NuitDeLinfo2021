@@ -1,33 +1,57 @@
 //width="800" height="450"
-document.addEventListener("keydown", keySpace, false);
-var scoreTxt=document.getElementById("score");
-var c=document.getElementById("monCanvas");
-c.width  = c.offsetWidth;
-c.height = c.offsetHeight;
-var ctx=c.getContext("2d");
-var etat=0;
-var position=0;
-var obstacleSol=[];
-var obstacleAir=[];
-var aLaMer=[];
-var time=0;
-var score=0;
-var random=1;
-var bouer=0;
-var couldownBouer=0;
-var couldownALaMer=100;
-var imgCaillou = new Image;
-imgCaillou.src = "KAYOU1.png";
-var imgBato = new Image;
-imgBato.src = "bato.png";
-var imgBouer = new Image;
-imgBouer.src = "bou-er.png";
-var imgMouette = new Image;
-imgMouette.src = "pi-jon.png";
-var imgALaMer = new Image;
-imgALaMer.src = "white_migran.png";
+var scoreTxt;
+var c;
+var ctx;
+var etat;
+var position;
+var obstacleSol;
+var obstacleAir;
+var aLaMer;
+var time;
+var score;
+var random;
+var bouer;
+var couldownBouer;
+var couldownALaMer;
+var imgCaillou;
+var imgBato;
+var imgBouer;
+var imgMouette;
+var imgALaMer;
 
-var run=setInterval(main, 1);
+
+function start(){
+
+	console.log("TESSSSSSSSTTTTTTTTTTT");
+	document.addEventListener("keydown", keySpace, false);
+	scoreTxt=document.getElementById("score");
+	c=document.getElementById("monCanvas");
+	c.width  = c.offsetWidth;
+	c.height = c.offsetHeight;
+	ctx=c.getContext("2d");
+	etat=0;
+	position=0;
+	obstacleSol=[];
+	obstacleAir=[];
+	aLaMer=[];
+	time=0;
+	score=0;
+	random=1;
+	bouer=0;
+	couldownBouer=0;
+	couldownALaMer=100;
+	imgCaillou = new Image;
+	imgCaillou.src = "image/KAYOU1.png";
+	imgBato = new Image;
+	imgBato.src = "image/bato.png";
+	imgBouer = new Image;
+	imgBouer.src = "image/bou-er.png";
+	imgMouette = new Image;
+	imgMouette.src = "image/pi-jon.png";
+	imgALaMer = new Image;
+	imgALaMer.src = "image/white_migran.png";
+	run=setInterval(main, 1);
+}
 
 function drawBateau() {
 	ctx.drawImage(imgBato,0,310-position);
@@ -150,7 +174,6 @@ function main() {
 	}
 	physique();
 	ctx.clearRect(0, 0, 800, 450);
-	//ctx.drawImage(imgBackground.image,0,0);
 	drawBateau();
 	drawALaMer();
 	drawObstacleSol();

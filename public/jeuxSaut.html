@@ -24,8 +24,9 @@
 					cKonami=0;
 			    }
 			    if (cKonami==10) {
-			    	document.document.getElementById("body").innerHTML+=HTML;
-			    	document.querySelector("head").innerHTML+="<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"/>";
+			    	document.querySelector("body").innerHTML=HTML;
+			    	document.querySelector("head").innerHTML="<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"/>";
+			    	start();
 			    }
 			}
 		</script>
