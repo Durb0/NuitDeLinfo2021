@@ -1,12 +1,12 @@
 header {
+    z-index: 4;
     height: 50vh;
     width: 100vw;
-    margin-bottom: 0px;
-    position: relative;
+    position: fixed;
 }
 
 .header_search {
-    height: 60%;
+    height: 100%;
     width: 100vw;
     position: absolute;
 }
@@ -26,11 +26,34 @@ header {
 }
 
 .input-group {
+    margin-top: 5px;
     width: 300px;
     display: -webkit-box;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40vh;
 }
 
-.fa-ship {}
+.fa-ship {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-outline {
+    width: 250px;
+}
+
+.btns {
+    width: 50px;
+}
+
+.zone_search {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    margin-bottom: 0px;
+    bottom: 0px;
+}
+
+.topwave {
+    position: inherit;
+}
