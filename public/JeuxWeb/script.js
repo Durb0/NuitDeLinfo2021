@@ -20,35 +20,38 @@ var imgCaillou = new Image;
 imgCaillou.src = "KAYOU1.png";
 var imgBato = new Image;
 imgBato.src = "bato.png";
+var imgBouer = new Image;
+imgBouer.src = "bou-er.png";
+var imgMouette = new Image;
+imgMouette.src = "pi-jon.png";
+var imgALaMer = new Image;
+imgALaMer.src = "white_migran.png";
 
 var run=setInterval(main, 1);
 
 function drawBateau() {
-	ctx.drawImage(imgBato,0,410-position);
+	ctx.drawImage(imgBato,0,310-position);
 }
 
 function drawBouer() {
-	ctx.fillStyle="#582900";
-	ctx.fillRect(10,450-position,20,-20);
+	ctx.drawImage(imgBouer,10,330-position);
 }
 
 function drawALaMer() {
 	for(let i=0;i<aLaMer.length;i++){
-		ctx.fillStyle="#FFFF00";
-		ctx.fillRect(aLaMer[i],450,20,-20);
+		ctx.drawImage(imgALaMer,aLaMer[i],330);
 	}
 }
 
 function drawObstacleSol() {
 	for(let i=0;i<obstacleSol.length;i++){
-		ctx.drawImage(imgCaillou,obstacleSol[i],430);
+		ctx.drawImage(imgCaillou,obstacleSol[i],330);
 	}
 }
 
 function drawObstacleAir() {
 	for(let i=0;i<obstacleAir.length;i++){
-		ctx.fillStyle="#00FF00";
-		ctx.fillRect(obstacleAir[i],400,20,-20);
+		ctx.drawImage(imgMouette,obstacleAir[i],280);
 	}
 }
 
@@ -146,8 +149,8 @@ function main() {
 		}
 	}
 	physique();
-	ctx.fillStyle="#FFFFFF";
-	ctx.fillRect(0,0,800,450);
+	ctx.clearRect(0, 0, 800, 450);
+	//ctx.drawImage(imgBackground.image,0,0);
 	drawBateau();
 	drawALaMer();
 	drawObstacleSol();
